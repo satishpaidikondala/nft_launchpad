@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+  --background: #0f172a;
+  --surface: #1e293b;
+  --surface-border: #334155;
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --secondary: #ec4899;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --success: #4ade80;
+  --error: #f87171;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: -0.05em;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.preview-card {
+  background: var(--surface);
+  border-radius: 24px;
+  border: 1px solid var(--surface-border);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.preview-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.status-badge {
+  font-weight: 700;
+  color: var(--success);
+  text-transform: uppercase;
+}
+
+.progress-bar {
+  height: 12px;
+  background: var(--surface-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  transition: width 0.5s ease;
+}
+
+.count-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: monospace;
+  font-size: 1.1rem;
+}
+
+.mint-card {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  padding: 2rem;
+  border-radius: 20px;
+}
+
+.connect-prompt {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+}
+
+.connected-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.address-text {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quantity-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--surface-border);
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.quantity-btn:hover {
+  background: var(--text-muted);
+}
+
+.quantity-input {
+  flex: 1;
+  background: var(--background);
+  border: 1px solid var(--surface-border);
+  color: var(--text);
+  padding: 0.75rem;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.mint-btn {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 14px;
+  border: none;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.2s;
+  box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.3);
+}
+
+.mint-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.4);
+}
+
+.mint-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background: var(--surface-border);
+}
+
+.error-btn {
+    border: 1px solid var(--error);
+    background: transparent;
+    color: var(--error);
+}
+
+.tx-hash {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    word-break: break-all;
+}
+
+.success-msg {
+    text-align: center;
+    color: var(--success);
+    font-weight: 600;
+}
