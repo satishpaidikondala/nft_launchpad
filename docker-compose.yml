@@ -1,0 +1,28 @@
+services:
+  hardhat-node:
+    build:
+      context: .
+      target: contracts
+    ports:
+      - "8546:8545"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8545"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    command: npx hardhat node --hostname 0.0.0.0
+
+  frontend:
+    build:
+      context: .
+      target: frontend
+    ports:
+      - "3001:3000"
+    environment:
+      - NEXT_PUBLIC_CONTRACT_ADDRESS=${NEXT_PUBLIC_CONTRACT_ADDRESS}
+      - NEXT_PUBLIC_RPC_URL=http://hardhat-node:8545
+    depends_on:
+      hardhat-node:
+        condition: service_healthy
+    command: npm run dev
